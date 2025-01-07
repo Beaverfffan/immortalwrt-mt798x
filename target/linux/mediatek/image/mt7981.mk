@@ -479,6 +479,22 @@ define Device/glinet_gl-mt3000
 endef
 TARGET_DEVICES += glinet_gl-mt3000
 
+define Device/one_r35-mini
+  DEVICE_VENDOR := one
+  DEVICE_MODEL := r35-mini
+  DEVICE_DTS := mt7981-one-r35-mini
+  DEVICE_DTS_DIR := $(DTS_DIR)/mediatek
+  SUPPORTED_DEVICES := one,r35-mini-snand
+  DEVICE_PACKAGES := $(MT7981_USB_PKGS) kmod-hwmon-pwmfan luci-app-samba4
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  KERNEL_IN_UBI := 1
+  IMAGES := sysupgrade.tar
+  IMAGE/sysupgrade.tar := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += one_r35-mini
+
 define Device/glinet_gl-x3000
   DEVICE_VENDOR := GL.iNet
   DEVICE_MODEL := GL-X3000
